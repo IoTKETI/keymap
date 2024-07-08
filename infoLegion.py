@@ -52,6 +52,8 @@ def main():
         # Possible joystick events: JOYAXISMOTION, JOYBALLMOTION, JOYBUTTONDOWN,
         # JOYBUTTONUP, JOYHATMOTION, JOYDEVICEADDED, JOYDEVICEREMOVED
         for event in pygame.event.get():
+            if event.type == pygame.JOYAXISMOTION:
+                print(event)
             if event.type == pygame.QUIT:
                 done = True  # Flag that we are done so we exit this loop.
 
