@@ -81,16 +81,19 @@ def main():
       forward = joystick.get_axis(3)
       side = joystick.get_axis(2)
       yaw = joystick.get_axis(0)
+      #print(yaw, forward, side)
       if abs(forward) < threshold:
         forward = 0
       if abs(side) < threshold:
         side = 0
       if abs(yaw) < threshold:
         yaw = 0
+      #print(yaw, forward, side)
       chan1_raw = int(yaw * 500 + 1500)
       chan3_raw = int(-forward * 500 + 1495)
-      chan4_raw = int(side * 500 + 1500)
+      chan4_raw = int(side * 500 + 1500)      
       mavmsg = generateRCChannelsOverride(chan1_raw, chan3_raw, chan4_raw)
+      #print(chan1_raw, chan3_raw, chan4_raw)
       client.publish(topic, mavmsg)
       #print(mavmsg)
 
